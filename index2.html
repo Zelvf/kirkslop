@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased selection:bg-[#ff00ff] selection:text-white">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$KIRKSLOP | THE INFINITE MEME</title>
+    <meta name="description"
+        content="The creation of AI generated material that involves putting Charlie Kirk's face into random & absurd content.">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kirkslop.com/">
+    <meta property="og:title" content="$KIRKSLOP | 100% PURE BRAINROT">
+    <meta property="og:description"
+        content="The creation of AI generated material that involves putting Charlie Kirk's face into random & absurd content.">
+    <meta property="og:image" content="https://kirkslop.com/images/pfp.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="kirkslop.com">
+    <meta name="twitter:url" content="https://kirkslop.com/">
+    <meta name="twitter:title" content="$KIRKSLOP | 100% PURE BRAINROT">
+    <meta name="twitter:description"
+        content="The creation of AI generated material that involves putting Charlie Kirk's face into random & absurd content.">
+    <meta name="twitter:image" content="https://kirkslop.com/images/pfp.png">
+
+    <!-- Unhinged Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,700;1,700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        meme: ['Impact', 'Arial Black', 'sans-serif'],
+                        comic: ['"Comic Neue"', 'cursive'],
+                        pixel: ['"Press Start 2P"', 'monospace'],
+                    },
+                    colors: {
+                        slop: '#00ff00', // Toxic slime green
+                        magenta: '#ff00ff', // Eye-bleeding magenta
+                        yellow: '#ffff00', // Pure yellow
+                        cyan: '#00ffff', // Pure cyan
+                        void: '#000000',
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '16px 16px 0px 0px rgba(0,0,0,1)',
+                        'brutal-hover': '4px 4px 0px 0px rgba(0,0,0,1)',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'marquee': 'marquee 10s linear infinite',
+                        'rainbow': 'rainbow 2s linear infinite',
+                    },
+                    keyframes: {
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        rainbow: {
+                            '0%': { filter: 'hue-rotate(0deg)' },
+                            '100%': { filter: 'hue-rotate(360deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP & Lenis for High-Fidelity (but chaotic) Motion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <style>
+        /* Chaotic Utilities */
+        body {
+            background-color: #ffff00;
+            /* Blinding yellow */
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #000;
+            cursor: crosshair;
+            overflow-x: hidden;
+        }
+
+        .meme-text {
+            color: white;
+            -webkit-text-stroke: 3px black;
+            text-shadow: 4px 4px 0 #000;
+        }
+
+        .deepfry-hover:hover {
+            filter: contrast(200%) saturate(300%) sepia(50%) hue-rotate(-50deg);
+            transform: scale(1.05) rotate(random(-5deg, 5deg));
+            z-index: 50;
+        }
+
+        /* Custom Marquee wrapper */
+        .marquee-container {
+            width: 200%;
+            display: flex;
+        }
+
+        /* Glitch effect on hover */
+        .glitch-hover:hover {
+            animation: shake 0.2s infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-comic">
+
+    <!-- Image Modal for Clicking Images -->
+    <div id="image-modal"
+        class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md cursor-pointer transition-opacity duration-200 opacity-0">
+        <div class="relative w-full max-w-5xl flex justify-center">
+            <div
+                class="absolute -top-10 font-pixel text-white text-xl bg-magenta p-2 border-4 border-black transform rotate-2 animate-pulse shadow-brutal z-10">
+                CLICK OUTSIDE TO CLOSE</div>
+            <img id="modal-img" src="" alt="Expanded Slop"
+                class="w-auto max-h-[85vh] border-8 border-slop shadow-brutal-lg transform scale-90 transition-transform duration-300 ease-out">
+        </div>
+    </div>
+
+    <!-- Aggressive Top Marquee -->
+    <div class="fixed top-0 w-full bg-magenta text-white border-b-4 border-black z-50 overflow-hidden py-1">
+        <div class="marquee-container animate-marquee font-pixel text-xs tracking-widest uppercase">
+            <span class="whitespace-nowrap">⚠️ WARNING: HIGH LEVELS OF SLOP DETECTED ⚠️ BUY $KIRKSLOP ⚠️ NO LOGIC, ONLY
+                SLOP ⚠️ CHARLIE KIRK LIVES FOREVER IN THE BLOCKCHAIN ⚠️</span>
+            <span class="whitespace-nowrap">⚠️ WARNING: HIGH LEVELS OF SLOP DETECTED ⚠️ BUY $KIRKSLOP ⚠️ NO LOGIC, ONLY
+                SLOP ⚠️ CHARLIE KIRK LIVES FOREVER IN THE BLOCKCHAIN ⚠️</span>
+        </div>
+    </div>
+
+    <main id="smooth-wrapper" class="pt-10">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section class="relative min-h-screen flex items-center justify-center px-6 pt-20 pb-10 overflow-hidden"
+                aria-labelledby="hero-title">
+
+                <!-- Floating background emojis -->
+                <div class="absolute inset-0 z-0 pointer-events-none text-6xl opacity-30">
+                    <div class="absolute top-1/4 left-10 animate-spin-slow">🤯</div>
+                    <div class="absolute bottom-1/4 right-20 animate-bounce">📈</div>
+                    <div class="absolute top-1/3 right-1/4 animate-pulse">🔥</div>
+                    <div class="absolute bottom-1/3 left-1/4 animate-wiggle">💀</div>
+                </div>
+
+                <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center z-10">
+                    <div class="flex flex-col gap-6 items-start" id="hero-content">
+
+                        <div
+                            class="bg-cyan border-4 border-black shadow-brutal px-4 py-2 transform -rotate-2 animate-pulse">
+                            <span class="font-pixel text-xs font-bold uppercase text-black">Welcome to the
+                                $Kirkslop</span>
+                        </div>
+
+                        <h1 id="hero-title"
+                            class="font-meme meme-text text-7xl md:text-9xl leading-[0.85] tracking-tight uppercase transform rotate-1">
+                            THE<br>
+                            <span class="text-slop">$KIRKSLOP</span><br>
+                            REVOLUTION
+                        </h1>
+
+                        <p
+                            class="font-comic text-xl md:text-2xl text-black font-bold bg-white border-4 border-black p-4 shadow-brutal transform -rotate-1 max-w-lg">
+                            The internet has adopted Kirk as one of the forefathers for AI slop content. 100% Continuous
+                            Brainrot. No Boundaries Memeing.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full">
+                            <button id="copy-hero"
+                                class="glitch-hover w-full sm:w-auto bg-slop text-black border-4 border-black shadow-brutal font-pixel text-sm uppercase py-4 px-8 transform hover:translate-y-1 hover:shadow-brutal-hover transition-all active:shadow-none active:translate-y-2">
+                                COPY CA 📋
+                            </button>
+                            <div
+                                class="w-full sm:w-auto font-pixel text-xs md:text-sm text-black bg-white border-4 border-black px-4 py-4 shadow-brutal break-all select-all text-center">
+                                8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump
+                            </div>
+                        </div>
+
+                        <!-- Social & Trading Links -->
+                        <div class="flex flex-wrap items-center gap-4 mt-2 w-full">
+                            <a href="https://x.com/Kirkslopsol" target="_blank" rel="noopener noreferrer"
+                                class="glitch-hover flex-1 sm:flex-none flex items-center justify-center gap-2 bg-cyan text-black border-4 border-black shadow-brutal font-pixel text-xs uppercase py-3 px-4 transform hover:translate-y-1 hover:shadow-brutal-hover transition-all active:shadow-none active:translate-y-2">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.976H5.078z">
+                                    </path>
+                                </svg>
+                                FOLLOW
+                            </a>
+                            <a href="https://x.com/i/chat/group_join/g2053460667257237769/Ib1I7RTptq" target="_blank"
+                                rel="noopener noreferrer"
+                                class="glitch-hover flex-1 sm:flex-none flex items-center justify-center gap-2 bg-yellow text-black border-4 border-black shadow-brutal font-pixel text-xs uppercase py-3 px-4 transform hover:translate-y-1 hover:shadow-brutal-hover transition-all active:shadow-none active:translate-y-2">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.976H5.078z">
+                                    </path>
+                                </svg>
+                                JOIN CHAT
+                            </a>
+                            <a href="https://dexscreener.com/solana/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump"
+                                target="_blank" rel="noopener noreferrer"
+                                class="glitch-hover flex-1 sm:flex-none flex items-center justify-center gap-2 bg-magenta text-white border-4 border-black shadow-brutal font-pixel text-xs uppercase py-3 px-4 transform hover:translate-y-1 hover:shadow-brutal-hover transition-all active:shadow-none active:translate-y-2">
+                                <img src="https://dexscreener.com/favicon.ico" alt="Dexscreener"
+                                    class="w-4 h-4 object-contain" onerror="this.outerHTML='📈'">
+                                DEXSCREENER
+                            </a>
+                            <a href="https://pump.fun/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump" target="_blank"
+                                rel="noopener noreferrer"
+                                class="glitch-hover flex-1 sm:flex-none flex items-center justify-center gap-2 bg-slop text-black border-4 border-black shadow-brutal font-pixel text-xs uppercase py-3 px-4 transform hover:translate-y-1 hover:shadow-brutal-hover transition-all active:shadow-none active:translate-y-2">
+                                <img src="https://pump.fun/favicon.ico" alt="PumpFun" class="w-4 h-4 object-contain"
+                                    onerror="this.outerHTML='💊'">
+                                PUMPFUN
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative w-full aspect-square md:aspect-[4/5] z-10 group" id="hero-image-wrapper">
+                        <!-- Obnoxious Image Styling -->
+                        <img src="images/pfp.png" alt="Charlie Kirk - Slop Father"
+                            class="expandable-image absolute inset-0 w-full h-full object-cover transform transition-transform duration-200 group-hover:scale-105 group-hover:-rotate-3 cursor-zoom-in"
+                            id="hero-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop';">
+
+                        <div
+                            class="absolute -bottom-6 -left-6 bg-yellow border-4 border-black px-6 py-3 shadow-brutal transform rotate-6 animate-wiggle pointer-events-none">
+                            <p class="font-meme text-2xl text-black uppercase">MOUNT RUSHMORE OF MEMES</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rolling Marquee Divider -->
+            <div class="w-full bg-black text-slop border-y-4 border-black overflow-hidden py-4">
+                <div class="marquee-container animate-marquee font-meme text-4xl uppercase tracking-widest">
+                    <span class="whitespace-nowrap">US-IRAN SLOPAGANDA WAR • HE FITS ANY AGENDA • NO LOGIC TO WHOM HE
+                        CAN BE • </span>
+                    <span class="whitespace-nowrap">US-IRAN SLOPAGANDA WAR • HE FITS ANY AGENDA • NO LOGIC TO WHOM HE
+                        CAN BE • </span>
+                </div>
+            </div>
+
+            <!-- The Lore Section (Chaotic Sticky Notes) -->
+            <section class="py-24 px-6 bg-magenta relative border-b-8 border-black" aria-label="The Lore Timeline">
+                <div class="container mx-auto max-w-6xl">
+                    <div class="text-center mb-16 bouncer">
+                        <h2 class="font-meme meme-text text-6xl md:text-8xl uppercase">THE LORE </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+
+                        <!-- Note 1 -->
+                        <div
+                            class="timeline-note bg-yellow border-4 border-black p-8 shadow-brutal transform rotate-2 hover:rotate-0 transition-transform duration-200">
+                            <div class="flex justify-between items-start border-b-4 border-black pb-4 mb-4">
+                                <h3 class="font-meme text-3xl uppercase">Sept 2025: The Catalyst</h3>
+                                <span class="text-4xl">🔪</span>
+                            </div>
+                            <p class="font-comic text-xl font-bold leading-relaxed">
+                                Since the murder of Charlie Kirk, the internet adopted him as the forefather of AI slop.
+                                He sits on the Mount Rushmore of meme'd characters. Continuous brainrot era unlocked.
+                            </p>
+                        </div>
+
+                        <!-- Note 2 -->
+                        <div
+                            class="timeline-note bg-cyan border-4 border-black p-8 shadow-brutal transform -rotate-3 hover:rotate-0 transition-transform duration-200 mt-0 md:mt-12">
+                            <div class="flex justify-between items-start border-b-4 border-black pb-4 mb-4">
+                                <h3 class="font-meme text-3xl uppercase">The New Yorker Era</h3>
+                                <span class="text-4xl">📰</span>
+                            </div>
+                            <p class="font-comic text-xl font-bold leading-relaxed">
+                                "The Kirkification of Our Troubled Times" dropping facts. Memes in warfare normalized.
+                                The US - Iran slopaganda war is real and he is the face of it.
+                            </p>
+                        </div>
+
+                        <!-- Note 3 -->
+                        <div
+                            class="timeline-note bg-slop border-4 border-black p-8 shadow-brutal transform rotate-1 hover:rotate-0 transition-transform duration-200">
+                            <div class="flex justify-between items-start border-b-4 border-black pb-4 mb-4">
+                                <h3 class="font-meme text-3xl uppercase">Infinite Variations</h3>
+                                <span class="text-4xl">♾️</span>
+                            </div>
+                            <p class="font-comic text-xl font-bold leading-relaxed">
+                                Ice Spice, Hitler, Taylor Swift, Bart Simpson, the Rizzler, Shaq, Silver Surfer, random
+                                e-girls... In the world of Kirkslop, THERE ARE NO LIMITS OR LOGIC.
+                            </p>
+                        </div>
+
+                        <!-- Note 4 -->
+                        <div
+                            class="timeline-note bg-white border-4 border-black p-8 shadow-brutal transform -rotate-2 hover:rotate-0 transition-transform duration-200 mt-0 md:mt-12">
+                            <div class="flex justify-between items-start border-b-4 border-black pb-4 mb-4">
+                                <h3 class="font-meme text-3xl uppercase">The Legacy</h3>
+                                <span class="text-4xl">👑</span>
+                            </div>
+                            <p class="font-comic text-xl font-bold leading-relaxed">
+                                "A meme so moldable it can fit any agenda, all the time." The memory never ends. Welcome
+                                to Kirkslop. Embrace the Slop.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tokenomics  -->
+            <section class="py-24 px-6 bg-yellow border-b-8 border-black relative" aria-label="Tokenomics">
+                <div class="container mx-auto">
+                    <div class="text-center mb-12">
+                        <h2
+                            class="font-meme meme-text text-6xl md:text-8xl uppercase inline-block bg-black px-6 py-2 transform rotate-2">
+                            TOKENOMICS </h2>
+                    </div>
+
+                    <div
+                        class="grid md:grid-cols-2 gap-12 items-center bg-white border-8 border-black p-8 shadow-brutal-lg">
+
+                        <div class="flex flex-col gap-8">
+                            <div class="border-l-8 border-magenta pl-6">
+                                <h3 class="font-meme text-5xl uppercase mb-2">1 BILLION TOTAL SUPPLY</h3>
+                                <p class="font-comic text-xl font-bold">1,000,000,000 tokens formulated to power the
+                                    infinite scroll.</p>
+                            </div>
+
+                            <div class="border-l-8 border-cyan pl-6">
+                                <h3 class="font-meme text-5xl uppercase mb-2">10% LOCKED FOR SLOP</h3>
+                                <p class="font-comic text-xl font-bold">100M locked specifically for future relentless
+                                    expansion of the Kirkslop ecosystem.</p>
+                            </div>
+
+                            <div class="bg-slop border-4 border-black p-4 mt-4 animate-pulse inline-block">
+                                <p class="font-pixel text-xl uppercase font-bold">TICKER: $KIRKSLOP</p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex flex-col gap-4">
+                            <!-- Giant obnoxious CA Box -->
+                            <div
+                                class="bg-black text-yellow border-4 border-magenta p-6 shadow-brutal transform rotate-2">
+                                <p class="font-pixel text-xs text-magenta mb-2">OFFICIAL CONTRACT ADDRESS</p>
+                                <div class="flex flex-col sm:flex-row items-center gap-4">
+                                    <p
+                                        class="font-comic font-black text-xl md:text-2xl break-all selection:bg-cyan selection:text-black">
+                                        8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump
+                                    </p>
+                                    <button id="copy-tokenomics"
+                                        class="glitch-hover shrink-0 bg-slop text-black border-2 border-black shadow-brutal-hover font-pixel text-xs uppercase px-4 py-3 transform hover:translate-y-1 transition-all active:shadow-none active:translate-y-2">
+                                        COPY 📋
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Slop Engine (Meme Gallery) -->
+            <section class="py-24 px-6 bg-cyan relative border-b-8 border-black overflow-hidden"
+                aria-label="Meme Gallery">
+                <!-- Background visual noise -->
+                <div class="absolute inset-0 opacity-10 font-pixel text-9xl break-all leading-none pointer-events-none">
+                    SLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOPSLOP
+                </div>
+
+                <div class="container mx-auto relative z-10">
+                    <div class="text-center mb-16">
+                        <h2 class="font-meme meme-text text-6xl md:text-8xl uppercase inline-block animate-wiggle">THE
+                            BRAINROT ENGINE</h2>
+                        <p
+                            class="font-pixel text-black bg-yellow border-4 border-black p-3 inline-block mt-4 shadow-brutal text-sm">
+                            CLICK SLOP TO EXPAND</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- Meme 1 -->
+                        <div
+                            class="meme-card relative aspect-square border-4 border-black shadow-brutal bg-white overflow-hidden deepfry-hover group cursor-zoom-in">
+                            <img src="images/meme1.png" alt="Kirkified Shrek"
+                                class="expandable-image w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop';">
+                            <!-- Aggressive Meme Text Overlay on Hover -->
+                            <div
+                                class="absolute inset-0 bg-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none">
+                                <h3 class="font-meme meme-text text-4xl uppercase leading-none">SAVIOR KIRK</h3>
+
+                            </div>
+                        </div>
+
+                        <!-- Meme 2 -->
+                        <div
+                            class="meme-card relative aspect-square border-4 border-black shadow-brutal bg-white overflow-hidden deepfry-hover group transform mt-0 lg:mt-12 cursor-zoom-in">
+                            <img src="images/meme2.png" alt="The Rizzler"
+                                class="expandable-image w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop';">
+                            <div
+                                class="absolute inset-0 bg-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none">
+                                <h3 class="font-meme meme-text text-4xl uppercase leading-none">KIRK KIRK KIRK SAHUR
+                                </h3>
+
+                            </div>
+                        </div>
+
+                        <!-- Meme 3 -->
+                        <div
+                            class="meme-card relative aspect-square border-4 border-black shadow-brutal bg-white overflow-hidden deepfry-hover group cursor-zoom-in">
+                            <img src="images/meme3.png" alt="Ice Spice Slop"
+                                class="expandable-image w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?q=80&w=800&auto=format&fit=crop';">
+                            <div
+                                class="absolute inset-0 bg-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none">
+                                <h3 class="font-meme meme-text text-4xl uppercase leading-none">ABSOLUTE KIRKSLOP</h3>
+
+                            </div>
+                        </div>
+
+                        <!-- Meme 4 -->
+                        <div
+                            class="meme-card relative aspect-square border-4 border-black shadow-brutal bg-white overflow-hidden deepfry-hover group cursor-zoom-in">
+                            <img src="images/meme4.png" alt="Silver Surfer"
+                                class="expandable-image w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=800&auto=format&fit=crop';">
+                            <div
+                                class="absolute inset-0 bg-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none">
+                                <h3 class="font-meme meme-text text-4xl uppercase leading-none">KIRKLANDER</h3>
+
+                            </div>
+                        </div>
+
+                        <!-- Meme 5 -->
+                        <div
+                            class="meme-card relative aspect-square border-4 border-black shadow-brutal bg-white overflow-hidden deepfry-hover group transform mt-0 lg:mt-12 cursor-zoom-in">
+                            <img src="images/meme5.png" alt="Random E-Girl"
+                                class="expandable-image w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop';">
+                            <div
+                                class="absolute inset-0 bg-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none">
+                                <h3 class="font-meme meme-text text-4xl uppercase leading-none">KIRKVICULAR</h3>
+
+                            </div>
+                        </div>
+
+                        <!-- Meme 6 -->
+                        <div
+                            class="meme-card relative aspect-square border-4 border-black shadow-brutal bg-white overflow-hidden deepfry-hover group cursor-zoom-in">
+                            <img src="images/meme6.png" alt="Shaq Attack"
+                                class="expandable-image w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=800&auto=format&fit=crop';">
+                            <div
+                                class="absolute inset-0 bg-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none">
+                                <h3 class="font-meme meme-text text-4xl uppercase leading-none">KIRK STRIKLAND</h3>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kinetic Slop (Videos) Section -->
+            <section class="pt-24 pb-32 px-6 bg-black relative border-b-8 border-magenta" aria-label="Video Gallery">
+                <div class="container mx-auto">
+                    <div class="text-center mb-16 bouncer">
+                        <h2 class="font-meme text-slop text-6xl md:text-8xl uppercase"
+                            style="-webkit-text-stroke: 2px magenta;">KINETIC SLOP</h2>
+                        <p
+                            class="font-pixel text-white bg-magenta border-4 border-cyan p-3 inline-block mt-4 shadow-brutal text-sm">
+                            CLICK TO PLAY SLOP</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                        <!-- Video 1 -->
+                        <div
+                            class="video-card relative aspect-[3/4] border-4 border-cyan shadow-brutal bg-magenta overflow-hidden group transform hover:-translate-y-2 transition-transform duration-200 cursor-pointer">
+                            <video class="slop-video w-full h-full object-cover" loop playsinline preload="metadata">
+                                <source src="videos/vid1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div
+                                class="absolute inset-0 pointer-events-none border-8 border-transparent group-hover:border-slop transition-colors duration-200 z-10">
+                            </div>
+                            <!-- Noise overlay -->
+                            <div
+                                class="absolute inset-0 pointer-events-none bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')] opacity-20 group-hover:opacity-0 z-20 group-[.is-playing]:opacity-0 transition-opacity">
+                            </div>
+                            <!-- Hover Title Overlay -->
+                            <div
+                                class="video-overlay absolute inset-0 bg-black/70 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none z-30 group-[.is-playing]:hidden">
+                                <h3 class="font-meme meme-text text-3xl uppercase leading-none">RA-KIRK</h3>
+                                <p
+                                    class="font-comic text-xl font-black text-yellow text-shadow: 2px 2px 0 #000; bg-black inline-block mt-2 px-2 border-2 border-white">
+                                    STUDIO SESSION!</p>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 -->
+                        <div
+                            class="video-card relative aspect-[3/4] border-4 border-yellow shadow-brutal bg-slop overflow-hidden group transform hover:-translate-y-2 transition-transform duration-200 translate-y-0 md:translate-y-8 cursor-pointer">
+                            <video class="slop-video w-full h-full object-cover" loop playsinline preload="metadata">
+                                <source src="videos/vid2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div
+                                class="absolute inset-0 pointer-events-none border-8 border-transparent group-hover:border-magenta transition-colors duration-200 z-10">
+                            </div>
+                            <!-- Noise overlay -->
+                            <div
+                                class="absolute inset-0 pointer-events-none bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')] opacity-20 group-hover:opacity-0 z-20 group-[.is-playing]:opacity-0 transition-opacity">
+                            </div>
+                            <!-- Hover Title Overlay -->
+                            <div
+                                class="video-overlay absolute inset-0 bg-black/70 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none z-30 group-[.is-playing]:hidden">
+                                <h3 class="font-meme meme-text text-3xl uppercase leading-none">NBA YOUNGKIRK</h3>
+                                <p
+                                    class="font-comic text-xl font-black text-yellow text-shadow: 2px 2px 0 #000; bg-black inline-block mt-2 px-2 border-2 border-white">
+                                    FREESTYLE.</p>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 -->
+                        <div
+                            class="video-card relative aspect-[3/4] border-4 border-slop shadow-brutal bg-cyan overflow-hidden group transform hover:-translate-y-2 transition-transform duration-200 cursor-pointer">
+                            <video class="slop-video w-full h-full object-cover" loop playsinline preload="metadata">
+                                <source src="videos/vid3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div
+                                class="absolute inset-0 pointer-events-none border-8 border-transparent group-hover:border-yellow transition-colors duration-200 z-10">
+                            </div>
+                            <!-- Noise overlay -->
+                            <div
+                                class="absolute inset-0 pointer-events-none bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')] opacity-20 group-hover:opacity-0 z-20 group-[.is-playing]:opacity-0 transition-opacity">
+                            </div>
+                            <!-- Hover Title Overlay -->
+                            <div
+                                class="video-overlay absolute inset-0 bg-black/70 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-none pointer-events-none z-30 group-[.is-playing]:hidden">
+                                <h3 class="font-meme meme-text text-3xl uppercase leading-none">PLAQUEBOY KIRK</h3>
+                                <p
+                                    class="font-comic text-xl font-black text-yellow text-shadow: 2px 2px 0 #000; bg-black inline-block mt-2 px-2 border-2 border-white">
+                                    COCONUT WATER DANCE</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Acquire (Buy Section) -->
+            <section class="py-24 px-6 bg-slop relative" aria-label="How to Buy">
+                <div class="container mx-auto">
+                    <div class="text-center mb-16 bouncer">
+                        <h2 class="font-meme meme-text text-6xl md:text-8xl uppercase">HOW TO BUY THIS SLOP</h2>
+                        <p
+                            class="font-comic text-2xl font-bold mt-4 bg-white border-4 border-black inline-block px-4 py-2 shadow-brutal">
+                            Integrate into the collective.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                        <!-- Step 1 -->
+                        <div
+                            class="bg-yellow border-4 border-black p-6 shadow-brutal transform hover:-translate-y-2 hover:shadow-brutal-lg transition-all">
+                            <h3 class="font-meme text-8xl text-magenta mb-4 leading-none meme-text">1</h3>
+                            <h4 class="font-meme text-3xl uppercase border-b-4 border-black pb-2 mb-2">CREATE WALLET
+                            </h4>
+                            <p class="font-comic text-lg font-bold">Download Phantom or your wallet of choice for free.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div
+                            class="bg-cyan border-4 border-black p-6 shadow-brutal transform hover:-translate-y-2 hover:shadow-brutal-lg transition-all translate-y-4">
+                            <h3 class="font-meme text-8xl text-yellow mb-4 leading-none meme-text">2</h3>
+                            <h4 class="font-meme text-3xl uppercase border-b-4 border-black pb-2 mb-2">GET SOME SOL</h4>
+                            <p class="font-comic text-lg font-bold">Have SOL in your wallet. If you are broke, buy
+                                directly on Phantom.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div
+                            class="bg-magenta border-4 border-black p-6 shadow-brutal transform hover:-translate-y-2 hover:shadow-brutal-lg transition-all text-white">
+                            <h3 class="font-meme text-8xl text-slop mb-4 leading-none meme-text">3</h3>
+                            <h4 class="font-meme text-3xl uppercase border-b-4 border-black pb-2 mb-2">GO TO DEX</h4>
+                            <p class="font-comic text-lg font-bold text-black">Connect to Raydium or Jupiter. Paste the
+                                $KIRKSLOP token address.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div
+                            class="bg-white border-4 border-black p-6 shadow-brutal transform hover:-translate-y-2 hover:shadow-brutal-lg transition-all translate-y-4">
+                            <h3 class="font-meme text-8xl text-cyan mb-4 leading-none meme-text">4</h3>
+                            <h4 class="font-meme text-3xl uppercase border-b-4 border-black pb-2 mb-2">SWAP FOR SLOP
+                            </h4>
+                            <p class="font-comic text-lg font-bold text-black">Execute swap. Welcome to the Mount
+                                Rushmore of brainrot.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="border-t-8 border-black bg-black py-12 px-6 text-center text-white">
+                <div class="container mx-auto flex flex-col items-center justify-center gap-6">
+                    <div class="font-meme meme-text text-5xl tracking-tighter uppercase animate-rainbow">
+                        $KIRKSLOP
+                    </div>
+
+                    <!-- Footer Links -->
+                    <div class="flex flex-wrap justify-center items-center gap-6 mt-2">
+                        <a href="https://x.com/Kirkslopsol" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-cyan flex items-center gap-2 font-pixel text-xs md:text-sm uppercase underline transition-colors">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.976H5.078z">
+                                </path>
+                            </svg>
+                            FOLLOW X
+                        </a>
+                        <a href="https://x.com/i/chat/group_join/g2053460667257237769/Ib1I7RTptq" target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-yellow flex items-center gap-2 font-pixel text-xs md:text-sm uppercase underline transition-colors">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.976H5.078z">
+                                </path>
+                            </svg>
+                            X CHAT
+                        </a>
+                        <a href="https://dexscreener.com/solana/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-magenta flex items-center gap-2 font-pixel text-xs md:text-sm uppercase underline transition-colors">
+                            <img src="https://dexscreener.com/favicon.ico" alt="Dexscreener Logo"
+                                class="w-4 h-4 object-contain" onerror="this.outerHTML='📈'">
+                            Dexscreener
+                        </a>
+                        <a href="https://pump.fun/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump" target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-slop flex items-center gap-2 font-pixel text-xs md:text-sm uppercase underline transition-colors">
+                            <img src="https://pump.fun/favicon.ico" alt="PumpFun Logo" class="w-4 h-4 object-contain"
+                                onerror="this.outerHTML='💊'">
+                            PumpFun
+                        </a>
+                    </div>
+
+                    <p class="font-pixel text-xs uppercase text-slop mt-4">© 2026 THE INFINITE MEME • BUILT IN MS PAINT
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Notification Toast (For copy actions) -->
+    <div id="toast"
+        class="fixed bottom-10 right-10 bg-magenta text-white font-pixel border-4 border-black p-6 transform translate-y-32 opacity-0 transition-all duration-200 z-50 shadow-brutal text-sm">
+        CA COPIED TO CLIPBOARD! GO BUY SLOP!
+    </div>
+
+    <!-- Scripts for Logic & Animations -->
+    <script>
+        // 1. Copy to Clipboard Logic
+        const contractAddress = "8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump";
+        const copyBtns = document.querySelectorAll('#copy-hero, #copy-tokenomics');
+        const toast = document.getElementById('toast');
+
+        copyBtns.forEach(btn => {
+            // Save original button text
+            const originalText = btn.innerHTML;
+
+            btn.addEventListener('click', () => {
+                navigator.clipboard.writeText(contractAddress).then(() => {
+                    // Show notification toast
+                    toast.style.transform = 'translateY(0)';
+                    toast.style.opacity = '1';
+
+                    // Change button text to COPIED
+                    btn.innerHTML = "COPIED! ✅";
+
+                    // Add a screen shake on copy for maximum meme effect
+                    document.body.classList.add('glitch-hover');
+
+                    // Clean up toast and shake effect
+                    setTimeout(() => {
+                        toast.style.transform = 'translateY(150%)';
+                        toast.style.opacity = '0';
+                        document.body.classList.remove('glitch-hover');
+                    }, 2000);
+
+                    // Revert button text exactly 1.5 seconds later
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                    }, 1500);
+                });
+            });
+        });
+
+        // 2. Video Hover Autoplay Logic
+        const videoCards = document.querySelectorAll('.video-card');
+        videoCards.forEach(card => {
+            const video = card.querySelector('video');
+            if (video) {
+                card.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play().catch(e => console.log("Play prevented:", e));
+                        card.classList.add('is-playing');
+                    } else {
+                        video.pause();
+                        card.classList.remove('is-playing');
+                    }
+                });
+
+                // Ensure the overlay resets if video pauses for any reason
+                video.addEventListener('pause', () => card.classList.remove('is-playing'));
+                video.addEventListener('play', () => card.classList.add('is-playing'));
+            }
+        });
+
+        // 3. Image Expansion Modal Logic
+        const imageModal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const expandableImages = document.querySelectorAll('.expandable-image');
+
+        // Open Modal
+        expandableImages.forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation(); // Stop click from immediately bubbling to document
+                modalImg.src = img.src;
+                imageModal.classList.remove('hidden');
+
+                // Slight delay to allow display:block to apply before animating opacity/transform
+                requestAnimationFrame(() => {
+                    imageModal.classList.remove('opacity-0');
+                    modalImg.classList.remove('scale-90');
+                    modalImg.classList.add('scale-100');
+                });
+            });
+        });
+
+        // Close Modal
+        imageModal.addEventListener('click', () => {
+            imageModal.classList.add('opacity-0');
+            modalImg.classList.remove('scale-100');
+            modalImg.classList.add('scale-90');
+
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                imageModal.classList.add('hidden');
+                modalImg.src = ''; // Clear source so it doesn't flash old image next time
+            }, 200);
+        });
+
+        // 4. Smooth Scrolling (but make the animations jerky/bouncy)
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
+
+        // --- ANIMATIONS (Now configured to be annoying and bouncy) ---
+
+        // Hero Bouncing Load
+        const tlLoad = gsap.timeline();
+        tlLoad.from("#hero-content > *", {
+            scale: 0,
+            rotation: 45,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "elastic.out(1, 0.3)"
+        })
+            .from("#hero-image-wrapper", {
+                x: 200,
+                opacity: 0,
+                duration: 1,
+                ease: "back.out(1.7)"
+            }, "-=0.5");
+
+        // Bouncing Headers
+        gsap.utils.toArray('.bouncer').forEach(text => {
+            gsap.from(text, {
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 80%",
+                },
+                y: 100,
+                scale: 0.5,
+                opacity: 0,
+                duration: 1,
+                ease: "elastic.out(1, 0.4)"
+            });
+        });
+
+        // Notes chaotic entry
+        const notes = gsap.utils.toArray('.timeline-note');
+        notes.forEach((note, i) => {
+            gsap.from(note, {
+                scrollTrigger: {
+                    trigger: note,
+                    start: "top 85%",
+                },
+                x: i % 2 === 0 ? -100 : 100,
+                rotation: i % 2 === 0 ? -20 : 20,
+                opacity: 0,
+                duration: 0.8,
+                ease: "back.out(2)"
+            });
+        });
+
+        // Meme Cards slamming in
+        gsap.from(".meme-card", {
+            scrollTrigger: {
+                trigger: ".meme-card",
+                start: "top 80%",
+            },
+            scale: 0,
+            rotation: 180,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "elastic.out(1, 0.5)"
+        });
+
+        // Video Cards slamming in
+        gsap.from(".video-card", {
+            scrollTrigger: {
+                trigger: ".video-card",
+                start: "top 80%",
+            },
+            y: 150,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "back.out(1.5)"
+        });
+
+    </script>
+</body>
+
+</html>
