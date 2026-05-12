@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="antialiased selection:bg-[#ccff00] selection:text-[#000000]">
+<html lang="en" class="antialiased selection:bg-[#D6B588] selection:text-[#2B1D0E]">
 
 <head>
     <meta charset="UTF-8">
@@ -10,23 +10,23 @@
 
     <!-- Open Graph / Social Media Meta Tags (works for Telegram, Discord, etc.) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kirkslop.com/">
+    <meta property="og:url" content="">
     <meta property="og:title" content="$KIRKSLOP | The Infinite Meme">
     <meta property="og:description"
         content="The creation of AI generated material that involves putting Charlie Kirk's face into random & absurd content. Buy $KIRKSLOP on Solana.">
-    <meta property="og:image" content="https://kirkslop.com/images/pfp.png">
+    <meta property="og:image" content="images/pfp.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="$KIRKSLOP">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:domain" content="kirkslop.com">
-    <meta name="twitter:url" content="https://kirkslop.com/">
+    <meta name="twitter:domain" content="">
+    <meta name="twitter:url" content="">
     <meta name="twitter:title" content="$KIRKSLOP | The Infinite Meme">
     <meta name="twitter:description"
         content="The creation of AI generated material that involves putting Charlie Kirk's face into random & absurd content. Buy $KIRKSLOP on Solana.">
-    <meta name="twitter:image" content="https://kirkslop.com/images/pfp.png">
+    <meta name="twitter:image" content="images/pfp.png">
 
     <!-- Telegram specific -->
     <meta name="telegram:channel" content="@kirkslopsol">
@@ -49,10 +49,11 @@
                         body: ['"Syne"', 'sans-serif'],
                     },
                     colors: {
-                        slop: '#ccff00', // Toxic neon green
-                        void: '#030303', // Deepest black
-                        surface: '#0f0f0f', // Elevated black
-                        surface2: '#1a1a1a', // Hover states
+                        slop: '#D6B588', // Warm sand accent
+                        void: '#2B1D0E', // Dark warm brown
+                        surface: '#F0E4D0', // Light sand cards
+                        surface2: '#E5D5BB', // Sand hover
+                        sand: '#FDF6EC', // Page background
                     },
                     transitionTimingFunction: {
                         'expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
@@ -73,8 +74,8 @@
     <style>
         /* Base Overrides & Utilities */
         body {
-            background-color: #030303;
-            color: #f4f4f5;
+            background-color: #FDF6EC;
+            color: #2B1D0E;
             cursor: none;
         }
 
@@ -88,7 +89,7 @@
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background-color: #ccff00;
+            background-color: #D6B588;
             position: fixed;
             top: 0;
             left: 0;
@@ -101,7 +102,7 @@
         .cursor-outline {
             width: 40px;
             height: 40px;
-            border: 1px solid rgba(204, 255, 0, 0.5);
+            border: 1px solid rgba(214, 181, 136, 0.5);
             position: fixed;
             top: 0;
             left: 0;
@@ -136,15 +137,49 @@
     <div class="noise-overlay"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-6 mix-blend-difference flex justify-between items-center"
+    <nav class="fixed top-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-[#FDF6EC]/80 backdrop-blur-xl border-b border-void/5 shadow-[0_2px_20px_rgba(43,29,19,0.06)] transition-all duration-300"
         aria-label="Main Navigation">
-        <div class="text-slop font-heading font-bold text-xl tracking-tighter uppercase">$KIRKSLOP</div>
-        <button id="copy-nav"
-            class="nav-hover flex items-center gap-2 text-sm font-heading border border-slop/30 px-4 py-2 rounded-full hover:bg-slop hover:text-void transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slop focus:ring-offset-2 focus:ring-offset-void">
-            <span>CA: 8m5h...pump</span>
-            <i data-lucide="copy" class="w-4 h-4"></i>
+        <a href="#"
+            class="text-slop font-heading font-bold text-xl tracking-tighter uppercase hover:opacity-80 transition-opacity"><b>$KIRKSLOP</b></a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#lore"
+                class="font-heading text-sm uppercase tracking-wider text-void/60 hover:text-void transition-colors duration-300"><b>Lore</b></a>
+            <a href="#memes"
+                class="font-heading text-sm uppercase tracking-wider text-void/60 hover:text-void transition-colors duration-300"><b>Memes</b></a>
+            <a href="#videos"
+                class="font-heading text-sm uppercase tracking-wider text-void/60 hover:text-void transition-colors duration-300"><b>Videos</b></a>
+            <a href="#chart"
+                class="font-heading text-sm uppercase tracking-wider text-void/60 hover:text-void transition-colors duration-300"><b>Chart</b></a>
+            <a href="https://pump.fun/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump" target="_blank"
+                rel="noopener noreferrer"
+                class="font-heading text-sm uppercase tracking-wider bg-slop text-void font-bold px-5 py-2 rounded-full hover:opacity-80 transition-opacity duration-300">Buy</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+            <span class="w-6 h-0.5 bg-void rounded-full transition-transform duration-300"></span>
+            <span class="w-6 h-0.5 bg-void rounded-full transition-opacity duration-300"></span>
+            <span class="w-4 h-0.5 bg-void rounded-full transition-transform duration-300"></span>
         </button>
     </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-50 bg-[#FDF6EC] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 ease-out md:hidden">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 p-2" aria-label="Close menu">
+            <i data-lucide="x" class="w-8 h-8 text-void"></i>
+        </button>
+        <a href="#lore"
+            class="mobile-nav-link font-heading text-3xl uppercase tracking-wider text-void/60 hover:text-slop transition-colors">Lore</a>
+        <a href="#memes"
+            class="mobile-nav-link font-heading text-3xl uppercase tracking-wider text-void/60 hover:text-slop transition-colors">Memes</a>
+        <a href="#videos"
+            class="mobile-nav-link font-heading text-3xl uppercase tracking-wider text-void/60 hover:text-slop transition-colors">Videos</a>
+        <a href="#chart"
+            class="mobile-nav-link font-heading text-3xl uppercase tracking-wider text-void/60 hover:text-slop transition-colors">Chart</a>
+        <a href="https://pump.fun/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump" target="_blank"
+            rel="noopener noreferrer"
+            class="font-heading text-2xl uppercase tracking-wider bg-slop text-void font-bold px-8 py-3 rounded-full hover:opacity-80 transition-opacity">Buy
+            $KIRKSLOP</a>
+    </div>
 
     <main id="smooth-wrapper">
         <div id="smooth-content">
@@ -157,16 +192,16 @@
                     <div class="hero-shape absolute top-1/4 left-1/4 w-96 h-96 bg-slop/20 blur-[120px] rounded-full">
                     </div>
                     <div
-                        class="hero-shape absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/20 blur-[150px] rounded-full">
+                        class="hero-shape absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-700/20 blur-[150px] rounded-full">
                     </div>
                 </div>
 
                 <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center z-10">
                     <div class="flex flex-col gap-6 relative z-20" id="hero-content">
                         <div
-                            class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 w-max backdrop-blur-md">
+                            class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-void/10 bg-void/5 w-max backdrop-blur-md">
                             <span class="w-2 h-2 rounded-full bg-slop animate-pulse"></span>
-                            <span class="font-heading text-xs uppercase tracking-widest text-white/70">The Paradigm
+                            <span class="font-heading text-xs uppercase tracking-widest text-void/70">The Paradigm
                                 Shift</span>
                         </div>
                         <h1 id="hero-title"
@@ -175,24 +210,24 @@
                             <span class="text-slop italic pr-4">Kirkslop</span><br>
                             Revolution
                         </h1>
-                        <p class="font-body text-lg md:text-xl text-white/60 max-w-lg leading-relaxed mt-4">
+                        <p class="font-body text-lg md:text-xl text-void/60 max-w-lg leading-relaxed mt-4">
                             The continuous brainrot & no boundaries memeing. Welcome to the era where logic is obsolete
                             and the slop is infinite.
                         </p>
 
                         <div class="flex flex-wrap items-center gap-4 mt-8">
                             <button id="copy-hero"
-                                class="nav-hover group relative flex items-center justify-center gap-3 bg-slop text-void font-heading font-bold uppercase tracking-wider px-8 py-4 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-white">
+                                class="nav-hover group relative flex items-center justify-center gap-3 bg-slop text-void font-heading font-bold uppercase tracking-wider px-8 py-4 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-slop">
                                 <span class="relative z-10 flex items-center gap-2">
                                     Copy Contract <i data-lucide="clipboard" class="w-5 h-5"></i>
                                 </span>
                                 <div
-                                    class="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-expo ease-out z-0">
+                                    class="absolute inset-0 bg-void translate-y-[100%] group-hover:translate-y-0 transition-transform duration-expo ease-out z-0">
                                 </div>
                             </button>
                             <!-- Visible Contract Address -->
                             <div
-                                class="w-full sm:w-auto font-mono text-sm md:text-base text-white/50 bg-white/5 border border-white/10 px-4 py-3 rounded-xl break-all select-all hover:text-white hover:border-white/20 transition-colors duration-300">
+                                class="w-full sm:w-auto font-mono text-sm md:text-base text-void/50 bg-void/5 border border-void/10 px-4 py-3 rounded-xl break-all select-all hover:text-void hover:border-void/20 transition-colors duration-300">
                                 8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump
                             </div>
                         </div>
@@ -200,7 +235,7 @@
                         <!-- Social & Trading Links -->
                         <div class="flex flex-wrap items-center gap-4 mt-6">
                             <a href="https://x.com/Kirkslopsol" target="_blank" rel="noopener noreferrer"
-                                class="nav-hover flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
+                                class="nav-hover flex items-center gap-2 border border-void/10 bg-void/5 hover:bg-void/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
                                 <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current">
                                     <path
                                         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.976H5.078z">
@@ -210,20 +245,20 @@
                             </a>
                             <a href="https://x.com/i/chat/group_join/g2053460667257237769/Ib1I7RTptq" target="_blank"
                                 rel="noopener noreferrer"
-                                class="nav-hover flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
+                                class="nav-hover flex items-center gap-2 border border-void/10 bg-void/5 hover:bg-void/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
                                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                                 Join Chat
                             </a>
                             <a href="https://dexscreener.com/solana/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump"
                                 target="_blank" rel="noopener noreferrer"
-                                class="nav-hover flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
+                                class="nav-hover flex items-center gap-2 border border-void/10 bg-void/5 hover:bg-void/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
                                 <img src="https://dexscreener.com/favicon.ico" alt="Dexscreener"
                                     class="w-4 h-4 object-contain opacity-70">
                                 Dexscreener
                             </a>
                             <a href="https://pump.fun/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump" target="_blank"
                                 rel="noopener noreferrer"
-                                class="nav-hover flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
+                                class="nav-hover flex items-center gap-2 border border-void/10 bg-void/5 hover:bg-void/10 px-5 py-3 rounded-xl font-heading font-bold text-sm uppercase transition-colors">
                                 <img src="https://pump.fun/favicon.ico" alt="PumpFun"
                                     class="w-4 h-4 object-contain opacity-70">
                                 PumpFun
@@ -249,10 +284,10 @@
             </section>
 
             <!-- The Timeline / Narrative Section -->
-            <section class="py-32 px-6 bg-surface relative" aria-label="The Lore Timeline">
+            <section id="lore" class="py-32 px-6 bg-surface relative" aria-label="The Lore Timeline">
                 <div class="container mx-auto max-w-6xl relative">
                     <!-- Vertical Timeline Line -->
-                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 hidden md:block">
+                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[4px] bg-void/10 hidden md:block">
                         <div class="timeline-progress w-full bg-slop absolute top-0 left-0 h-0"></div>
                     </div>
 
@@ -270,7 +305,7 @@
                                         2025</span>
                                     <h3 class="font-heading text-3xl md:text-4xl font-bold uppercase mt-2 mb-4">The
                                         Catalyst</h3>
-                                    <p class="text-white/60 text-lg leading-relaxed">
+                                    <p class="text-void/60 text-lg leading-relaxed">
                                         Since the murder of Charlie Kirk, the internet adopted him as one of the
                                         forefathers for AI slop content. He sits upon the Mount Rushmore of most meme'd
                                         characters in this new era of continuous brainrot.
@@ -292,7 +327,7 @@
                                         Era</span>
                                     <h3 class="font-heading text-3xl md:text-4xl font-bold uppercase mt-2 mb-4">
                                         Slopaganda War</h3>
-                                    <p class="text-white/60 text-lg leading-relaxed">
+                                    <p class="text-void/60 text-lg leading-relaxed">
                                         "The Kirkification of Our Troubled Times" touched upon how the use of memes in
                                         warfare & death have become normalized. Specifically, the US - Iran slopaganda
                                         war.
@@ -315,7 +350,7 @@
                                     <h3 class="font-heading text-3xl md:text-4xl font-bold uppercase mt-2 mb-4">No
                                         Limits, No Logic</h3>
                                     <blockquote
-                                        class="text-white/80 text-xl leading-relaxed italic border-r-2 border-slop pr-6">
+                                        class="text-void/80 text-xl leading-relaxed italic border-r-2 border-slop pr-6">
                                         "Kirk morphed into one of the most widespread memes in recent memory...
                                         reimagined as Ice Spice, Hitler, Taylor Swift, Bart Simpson, the Rizzler,
                                         Shaquille O’Neal... In the world of Kirkslop, there are no limits, or logic."
@@ -336,7 +371,7 @@
                                     <span class="font-heading text-slop text-xl md:text-2xl font-bold">The Legacy</span>
                                     <h3 class="font-heading text-3xl md:text-4xl font-bold uppercase mt-2 mb-4">A Meme
                                         Moldable</h3>
-                                    <p class="text-white/60 text-lg leading-relaxed">
+                                    <p class="text-void/60 text-lg leading-relaxed">
                                         He has become so iconic, so meme'd & so divisive, that the memory of Kirk can
                                         simply never end. He fits any agenda, any message or any scenario; all of the
                                         time. Welcome to Kirkslop.
@@ -353,12 +388,12 @@
             </section>
 
             <!-- The Slop Engine (Meme Gallery) -->
-            <section class="py-32 px-6 relative" aria-label="Meme Gallery">
+            <section id="memes" class="py-32 px-6 relative" aria-label="Meme Gallery">
                 <div class="container mx-auto">
                     <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal-text">
                         <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter">The
                             Brainrot<br><span class="text-slop">Engine</span></h2>
-                        <p class="text-white/50 max-w-sm text-right mt-6 md:mt-0">Real-time manifestations of the
+                        <p class="text-void/50 max-w-sm text-right mt-6 md:mt-0">Real-time manifestations of the
                             moldable meme. Hover to inspect anomalies.</p>
                     </div>
 
@@ -378,7 +413,7 @@
                                     class="font-heading text-2xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                                     SAVIOR KIRK</h3>
                                 <p
-                                    class="mt-4 text-sm text-white/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                    class="mt-4 text-sm text-void/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
                                     Swamp logic overridden.</p>
                             </div>
                         </div>
@@ -398,7 +433,7 @@
                                     class="font-heading text-2xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                                     KIRK KIRK KIRK SAHUR</h3>
                                 <p
-                                    class="mt-4 text-sm text-white/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                    class="mt-4 text-sm text-void/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
                                     Unspoken brainrot rizz.</p>
                             </div>
                         </div>
@@ -418,7 +453,7 @@
                                     class="font-heading text-2xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                                     ABSOLUTE KIRKSLOP</h3>
                                 <p
-                                    class="mt-4 text-sm text-white/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                    class="mt-4 text-sm text-void/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
                                     You thought I was feeling you?</p>
                             </div>
                         </div>
@@ -438,7 +473,7 @@
                                     class="font-heading text-2xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                                     KIRKLANDER</h3>
                                 <p
-                                    class="mt-4 text-sm text-white/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                    class="mt-4 text-sm text-void/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
                                     Surfing the slop waves of eternity.</p>
                             </div>
                         </div>
@@ -458,7 +493,7 @@
                                     class="font-heading text-2xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                                     KIRKVICULAR</h3>
                                 <p
-                                    class="mt-4 text-sm text-white/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                    class="mt-4 text-sm text-void/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
                                     UwU agenda confirmed.</p>
                             </div>
                         </div>
@@ -478,7 +513,7 @@
                                     class="font-heading text-2xl font-bold uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                                     KIRK STRIKLAND</h3>
                                 <p
-                                    class="mt-4 text-sm text-white/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                    class="mt-4 text-sm text-void/70 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
                                     Slam dunking the discourse.</p>
                             </div>
                         </div>
@@ -487,18 +522,18 @@
             </section>
 
             <!-- Kinetic Slop (Videos) Section -->
-            <section class="py-32 px-6 relative border-t border-white/10" aria-label="Video Gallery">
+            <section id="videos" class="py-32 px-6 relative border-t border-void/10" aria-label="Video Gallery">
                 <div class="container mx-auto">
                     <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal-text">
                         <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter">
                             Kinetic<br><span class="text-slop">Slop</span></h2>
-                        <p class="text-white/50 max-w-sm text-right mt-6 md:mt-0">Click to play slop.</p>
+                        <p class="text-void/50 max-w-sm text-right mt-6 md:mt-0">Click to play slop.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- Video 1 -->
                         <div
-                            class="video-card group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer bg-surface2 border border-white/10 hover:border-slop/50 transition-colors duration-500">
+                            class="video-card group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer bg-surface2 border border-void/10 hover:border-slop/50 transition-colors duration-500">
                             <video
                                 class="slop-video w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 ease-expo"
                                 loop playsinline preload="metadata">
@@ -520,7 +555,7 @@
 
                         <!-- Video 2 -->
                         <div
-                            class="video-card group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer bg-surface2 border border-white/10 hover:border-slop/50 transition-colors duration-500 lg:translate-y-12">
+                            class="video-card group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer bg-surface2 border border-void/10 hover:border-slop/50 transition-colors duration-500 lg:translate-y-12">
                             <video
                                 class="slop-video w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 ease-expo"
                                 loop playsinline preload="metadata">
@@ -542,7 +577,7 @@
 
                         <!-- Video 3 -->
                         <div
-                            class="video-card group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer bg-surface2 border border-white/10 hover:border-slop/50 transition-colors duration-500">
+                            class="video-card group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer bg-surface2 border border-void/10 hover:border-slop/50 transition-colors duration-500">
                             <video
                                 class="slop-video w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 ease-expo"
                                 loop playsinline preload="metadata">
@@ -568,7 +603,7 @@
             <!-- Architecture (Tokenomics) -->
             <section class="py-32 px-6 bg-slop text-void relative overflow-hidden" aria-label="Tokenomics">
                 <div
-                    class="absolute -right-64 -top-64 w-[800px] h-[800px] bg-white opacity-20 rounded-full blur-[100px]">
+                    class="absolute -right-64 -top-64 w-[800px] h-[800px] bg-[#FDF6EC] opacity-20 rounded-full blur-[100px]">
                 </div>
 
                 <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -592,9 +627,9 @@
 
                     <div class="flex flex-col gap-6">
                         <!-- Stat Box 1 -->
-                        <div class="token-stat bg-void text-white p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="token-stat bg-void text-[#FDF6EC] p-8 rounded-3xl relative overflow-hidden group">
                             <div
-                                class="absolute inset-0 bg-white/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-expo">
+                                class="absolute inset-0 bg-void/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-expo">
                             </div>
                             <div class="relative z-10 flex justify-between items-end">
                                 <div>
@@ -603,12 +638,12 @@
                                         Supply</span>
                                     <h3 class="font-heading text-5xl md:text-6xl font-bold mt-2">1,000,000,000</h3>
                                 </div>
-                                <i data-lucide="coins" class="w-12 h-12 text-white/20 mb-2"></i>
+                                <i data-lucide="coins" class="w-12 h-12 text-[#FDF6EC]/20 mb-2"></i>
                             </div>
                         </div>
 
                         <!-- Stat Box 2 -->
-                        <div class="token-stat bg-white text-void p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="token-stat bg-[#FDF6EC] text-void p-8 rounded-3xl relative overflow-hidden group">
                             <div
                                 class="absolute inset-0 bg-black/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-expo">
                             </div>
@@ -627,49 +662,90 @@
                 </div>
             </section>
 
+
+            <!-- Live Chart Section -->
+            <section id="chart" class="py-24 px-6 relative border-t border-void/10" aria-label="Live Chart">
+                <div class="container mx-auto max-w-4xl">
+                    <div class="text-center mb-12 reveal-text">
+                        <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter">Live<br><span
+                                class="text-slop">Chart</span></h2>
+                        <p class="text-void/50 mt-4 text-lg">Track the brainrot in real-time.</p>
+                    </div>
+                    <div
+                        class="w-full rounded-3xl overflow-hidden border border-void/10 shadow-[0_0_50px_rgba(43,29,19,0.08)] bg-surface relative z-10">
+                        <style>
+                            #dexscreener-embed {
+                                position: relative;
+                                width: 100%;
+                                padding-bottom: 85%;
+                            }
+
+                            @media (min-width: 1400px) {
+                                #dexscreener-embed {
+                                    padding-bottom: 45%;
+                                }
+                            }
+
+                            #dexscreener-embed iframe {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                top: 0;
+                                left: 0;
+                                border: 0;
+                            }
+                        </style>
+                        <div id="dexscreener-embed">
+                            <iframe
+                                src="https://dexscreener.com/solana/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump?embed=1&theme=dark&info=0&trades=0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- How to Acquire (Buy Section) -->
             <section class="py-32 px-6 relative" aria-label="How to Buy">
                 <div class="container mx-auto">
                     <div class="text-center mb-20 reveal-text">
                         <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter">Acquisition
                             Protocol</h2>
-                        <p class="text-white/50 mt-4 text-lg">Integrate into the collective.</p>
+                        <p class="text-void/50 mt-4 text-lg">Integrate into the collective.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <!-- Step 1 -->
                         <div
-                            class="buy-step border border-white/10 bg-surface rounded-3xl p-8 hover:border-slop/50 transition-colors duration-500 relative overflow-hidden">
+                            class="buy-step border border-void/10 bg-surface rounded-3xl p-8 hover:border-slop/50 transition-colors duration-500 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 p-8 text-white/5 font-heading text-8xl font-bold leading-none pointer-events-none">
+                                class="absolute top-0 right-0 p-8 text-void/5 font-heading text-8xl font-bold leading-none pointer-events-none">
                                 1</div>
                             <i data-lucide="wallet" class="w-10 h-10 text-slop mb-6 relative z-10"></i>
                             <h3 class="font-heading text-2xl font-bold uppercase mb-3 relative z-10">Create Wallet</h3>
-                            <p class="text-white/60 text-sm relative z-10">Download Phantom or your wallet of choice
+                            <p class="text-void/60 text-sm relative z-10">Download Phantom or your wallet of choice
                                 from the app store or google play store for free.</p>
                         </div>
 
                         <!-- Step 2 -->
                         <div
-                            class="buy-step border border-white/10 bg-surface rounded-3xl p-8 hover:border-slop/50 transition-colors duration-500 relative overflow-hidden">
+                            class="buy-step border border-void/10 bg-surface rounded-3xl p-8 hover:border-slop/50 transition-colors duration-500 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 p-8 text-white/5 font-heading text-8xl font-bold leading-none pointer-events-none">
+                                class="absolute top-0 right-0 p-8 text-void/5 font-heading text-8xl font-bold leading-none pointer-events-none">
                                 2</div>
                             <i data-lucide="banknote" class="w-10 h-10 text-slop mb-6 relative z-10"></i>
                             <h3 class="font-heading text-2xl font-bold uppercase mb-3 relative z-10">Get Some SOL</h3>
-                            <p class="text-white/60 text-sm relative z-10">Have SOL in your wallet to switch to
+                            <p class="text-void/60 text-sm relative z-10">Have SOL in your wallet to switch to
                                 $KIRKSLOP. If you don't have any SOL, you can buy directly on phantom.</p>
                         </div>
 
                         <!-- Step 3 -->
                         <div
-                            class="buy-step border border-white/10 bg-surface rounded-3xl p-8 hover:border-slop/50 transition-colors duration-500 relative overflow-hidden">
+                            class="buy-step border border-void/10 bg-surface rounded-3xl p-8 hover:border-slop/50 transition-colors duration-500 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 p-8 text-white/5 font-heading text-8xl font-bold leading-none pointer-events-none">
+                                class="absolute top-0 right-0 p-8 text-void/5 font-heading text-8xl font-bold leading-none pointer-events-none">
                                 3</div>
                             <i data-lucide="arrow-right-left" class="w-10 h-10 text-slop mb-6 relative z-10"></i>
                             <h3 class="font-heading text-2xl font-bold uppercase mb-3 relative z-10">Go to DEX</h3>
-                            <p class="text-white/60 text-sm relative z-10">Connect to Raydium or Jupiter. Paste the
+                            <p class="text-void/60 text-sm relative z-10">Connect to Raydium or Jupiter. Paste the
                                 $KIRKSLOP token address into the select a token field.</p>
                         </div>
 
@@ -677,11 +753,11 @@
                         <div
                             class="buy-step border border-slop/30 bg-surface rounded-3xl p-8 hover:border-slop transition-colors duration-500 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 p-8 text-white/5 font-heading text-8xl font-bold leading-none pointer-events-none">
+                                class="absolute top-0 right-0 p-8 text-void/5 font-heading text-8xl font-bold leading-none pointer-events-none">
                                 4</div>
                             <i data-lucide="zap" class="w-10 h-10 text-slop mb-6 relative z-10"></i>
                             <h3 class="font-heading text-2xl font-bold uppercase mb-3 relative z-10">Swap for Slop</h3>
-                            <p class="text-white/60 text-sm relative z-10">Execute the swap. Welcome to the Mount
+                            <p class="text-void/60 text-sm relative z-10">Execute the swap. Welcome to the Mount
                                 Rushmore of brainrot.</p>
                         </div>
                     </div>
@@ -689,10 +765,10 @@
             </section>
 
             <!-- Footer -->
-            <footer class="border-t border-white/10 py-12 px-6 text-center">
+            <footer class="border-t border-void/10 py-12 px-6 text-center">
                 <div class="container mx-auto flex flex-col items-center justify-center gap-6">
                     <div class="text-slop font-heading font-bold text-3xl tracking-tighter uppercase">$KIRKSLOP</div>
-                    <p class="text-white/40 text-sm max-w-md">
+                    <p class="text-void/40 text-sm max-w-md">
                         Disclaimer: $KIRKSLOP is a meme coin created for entertainment purposes in the post-2025
                         brainrot era. It has no intrinsic value or expectation of financial return.
                     </p>
@@ -700,7 +776,7 @@
                     <!-- Footer Links -->
                     <div class="flex flex-wrap justify-center items-center gap-6 mt-4">
                         <a href="https://x.com/Kirkslopsol" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-white text-white/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
+                            class="hover:text-void text-void/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
                             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current">
                                 <path
                                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.976H5.078z">
@@ -710,27 +786,27 @@
                         </a>
                         <a href="https://x.com/i/chat/group_join/g2053460667257237769/Ib1I7RTptq" target="_blank"
                             rel="noopener noreferrer"
-                            class="hover:text-white text-white/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
+                            class="hover:text-void text-void/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
                             <i data-lucide="message-circle" class="w-4 h-4"></i>
                             X Chat
                         </a>
                         <a href="https://dexscreener.com/solana/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump"
                             target="_blank" rel="noopener noreferrer"
-                            class="hover:text-white text-white/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
+                            class="hover:text-void text-void/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
                             <img src="https://dexscreener.com/favicon.ico" alt="Dexscreener"
                                 class="w-4 h-4 object-contain opacity-50 hover:opacity-100 transition-opacity">
                             Dexscreener
                         </a>
                         <a href="https://pump.fun/8m5hzX9hprtWwPuVZL4daCZfggWYKc6fhSJDDpiqpump" target="_blank"
                             rel="noopener noreferrer"
-                            class="hover:text-white text-white/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
+                            class="hover:text-void text-void/50 flex items-center gap-2 font-heading text-sm uppercase transition-colors">
                             <img src="https://pump.fun/favicon.ico" alt="PumpFun"
                                 class="w-4 h-4 object-contain opacity-50 hover:opacity-100 transition-opacity">
                             PumpFun
                         </a>
                     </div>
 
-                    <p class="text-white/20 text-xs uppercase tracking-widest mt-6">© 2026 The Infinite Meme</p>
+                    <p class="text-void/20 text-xs uppercase tracking-widest mt-6">© 2026 The Infinite Meme</p>
                 </div>
             </footer>
         </div>
@@ -738,7 +814,7 @@
 
     <!-- Notification Toast (For copy actions) -->
     <div id="toast"
-        class="fixed bottom-6 right-6 bg-slop text-void font-heading font-bold px-6 py-3 rounded-full transform translate-y-24 opacity-0 transition-all duration-300 z-50 shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+        class="fixed bottom-6 right-6 bg-slop text-void font-heading font-bold px-6 py-3 rounded-full transform translate-y-24 opacity-0 transition-all duration-300 z-50 shadow-[0_0_20px_rgba(214,181,136,0.3)]">
         Contract Copied to Clipboard
     </div>
 
@@ -945,6 +1021,41 @@
             duration: 0.8,
             stagger: 0.15,
             ease: "back.out(1.2)"
+        });
+
+        // H. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            });
+
+            const closeMenu = () => {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+            };
+
+            if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMenu);
+
+            // Close menu when a nav link is clicked
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        }
+
+        // I. Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
     </script>
 </body>
