@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Watermark App</title>
+    <!-- Tailwind CSS for Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .canvas-container {
+            max-width: 100%;
+            height: auto;
+            max-height: 50vh;
+            object-fit: contain;
+            background-color: #000;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="max-w-3xl w-full bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 space-y-6">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
+                Watermark Generator
+            </h1>
+            <p class="text-slate-400 mt-2">Upload a video to automatically add your watermark.</p>
+        </div>
+
+        <!-- Upload Section -->
+        <div id="upload-section" class="border-2 border-dashed border-slate-600 rounded-xl p-8 text-center hover:border-blue-500 transition-colors cursor-pointer relative">
+            <input type="file" id="video-upload" accept="video/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+            <svg class="mx-auto h-12 w-12 text-slate-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <p class="text-lg font-medium text-slate-300">Click or drag video to upload</p>
+            <p class="text-sm text-slate-500 mt-1">MP4, WebM, or MOV</p>
+        </div>
+
+        <!-- Preview & Action Section (Hidden initially) -->
+        <div id="preview-section" class="hidden space-y-6">
+            <div class="canvas-container shadow-lg ring-1 ring-slate-700 relative">
+                <canvas id="output-canvas"></canvas>
+            </div>
+
+            <!-- Watermark Settings -->
+            <div class="bg-slate-700/50 p-4 rounded-lg space-y-4">
+                <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">Watermark Settings</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Size Slider -->
+                    <div>
+                        <label for="size-slider" class="block text-sm font-medium text-slate-300 mb-1">Text Size</label>
+                        <input type="range" id="size-slider" min="1" max="15" value="5" class="w-full h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <!-- Opacity Slider -->
+                    <div>
+                        <label for="opacity-slider" class="block text-sm font-medium text-slate-300 mb-1">Opacity (%)</label>
+                        <input type="range" id="opacity-slider" min="0" max="100" value="45" class="w-full h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <!-- Location Select -->
+                    <div>
+                        <label for="location-select" class="block text-sm font-medium text-slate-300 mb-1">Location</label>
+                        <select id="location-select" class="w-full bg-slate-600 text-slate-200 text-sm rounded-lg block p-2.5 border-none focus:ring-blue-500">
+                            <option value="top-left">Top Left</option>
+                            <option value="top-center">Top Center</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="center">Center</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="bottom-center" selected>Bottom Center</option>
+                            <option value="bottom-right">Bottom Right</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-col sm:flex-row gap-4 items-center justify-between bg-slate-700/50 p-4 rounded-lg">
+                <div class="flex-1 w-full">
+                    <p id="status-text" class="text-sm font-medium text-slate-300 mb-1">Ready to process</p>
+                    <div class="w-full bg-slate-600 rounded-full h-2.5 overflow-hidden">
+                        <div id="progress-bar" class="bg-blue-500 h-2.5 rounded-full w-0 transition-all duration-100"></div>
+                    </div>
+                </div>
+                <button id="process-btn" class="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-800 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Add Watermark & Export
+                </button>
+                <a id="download-btn" class="hidden w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-md transition-colors text-center" download="watermarked_video.webm">
+                    Download Video
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden original video element for processing -->
+    <video id="source-video" class="hidden" playsinline crossorigin="anonymous"></video>
+
+    <script>
+        const videoUpload = document.getElementById('video-upload');
+        const uploadSection = document.getElementById('upload-section');
+        const previewSection = document.getElementById('preview-section');
+        const sourceVideo = document.getElementById('source-video');
+        const canvas = document.getElementById('output-canvas');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        const processBtn = document.getElementById('process-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const statusText = document.getElementById('status-text');
+        const sizeSlider = document.getElementById('size-slider');
+        const opacitySlider = document.getElementById('opacity-slider');
+        const locationSelect = document.getElementById('location-select');
+
+        let isProcessing = false;
+        let animationFrameId;
+        let audioContext, mediaStreamDestination;
+
+        // Watermark Configuration
+        const WATERMARK_TEXT = "@itskirkslop";
+
+        // Handle File Upload
+        videoUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const fileURL = URL.createObjectURL(file);
+            sourceVideo.src = fileURL;
+
+            // Reset UI
+            uploadSection.classList.add('hidden');
+            previewSection.classList.remove('hidden');
+            downloadBtn.classList.add('hidden');
+            processBtn.classList.remove('hidden');
+            processBtn.disabled = false;
+            progressBar.style.width = '0%';
+            statusText.textContent = "Previewing... Ready to export.";
+
+            sourceVideo.onloadedmetadata = () => {
+                // Set canvas dimensions to match video natively
+                canvas.width = sourceVideo.videoWidth;
+                canvas.height = sourceVideo.videoHeight;
+                
+                // Start preview loop
+                sourceVideo.muted = true;
+                sourceVideo.loop = true;
+                sourceVideo.play();
+                drawFrame(true);
+            };
+        });
+
+        // The core rendering loop
+        function drawFrame(isPreview = false) {
+            if (sourceVideo.paused && !isPreview) return;
+
+            // Draw current video frame
+            ctx.drawImage(sourceVideo, 0, 0, canvas.width, canvas.height);
+
+            // Calculate responsive font size based on slider
+            const sizeMultiplier = parseInt(sizeSlider.value) / 100;
+            const fontSize = Math.max(Math.floor(canvas.height * sizeMultiplier), 16); 
+            
+            // Calculate transparency from slider
+            const currentOpacity = parseInt(opacitySlider.value) / 100;
+            
+            // Apply Watermark styling
+            ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+            ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
+            
+            // Calculate coordinates based on selected location
+            const padding = Math.max(Math.floor(canvas.height * 0.05), 16);
+            let x, y;
+
+            switch (locationSelect.value) {
+                case 'top-left':
+                    ctx.textAlign = "left"; ctx.textBaseline = "top";
+                    x = padding; y = padding;
+                    break;
+                case 'top-center':
+                    ctx.textAlign = "center"; ctx.textBaseline = "top";
+                    x = canvas.width / 2; y = padding;
+                    break;
+                case 'top-right':
+                    ctx.textAlign = "right"; ctx.textBaseline = "top";
+                    x = canvas.width - padding; y = padding;
+                    break;
+                case 'center':
+                    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+                    x = canvas.width / 2; y = canvas.height / 2;
+                    break;
+                case 'bottom-left':
+                    ctx.textAlign = "left"; ctx.textBaseline = "bottom";
+                    x = padding; y = canvas.height - padding;
+                    break;
+                case 'bottom-center':
+                default:
+                    ctx.textAlign = "center"; ctx.textBaseline = "bottom";
+                    x = canvas.width / 2; y = canvas.height - padding;
+                    break;
+                case 'bottom-right':
+                    ctx.textAlign = "right"; ctx.textBaseline = "bottom";
+                    x = canvas.width - padding; y = canvas.height - padding;
+                    break;
+            }
+            
+            // Draw Watermark
+            ctx.fillText(WATERMARK_TEXT, x, y);
+
+            // Update Progress Bar if processing
+            if (isProcessing && sourceVideo.duration) {
+                const percent = (sourceVideo.currentTime / sourceVideo.duration) * 100;
+                progressBar.style.width = `${percent}%`;
+            }
+
+            // Loop
+            animationFrameId = requestAnimationFrame(() => drawFrame(isPreview));
+        }
+
+        // Process and Export
+        processBtn.addEventListener('click', async () => {
+            if (isProcessing) return;
+            isProcessing = true;
+            processBtn.disabled = true;
+            statusText.textContent = "Processing video... Please do not switch tabs.";
+
+            // Stop preview
+            cancelAnimationFrame(animationFrameId);
+            sourceVideo.pause();
+            sourceVideo.loop = false;
+            sourceVideo.currentTime = 0;
+
+            // Setup Media Recorder stream from Canvas
+            const frameRate = 30; // standard capture framerate
+            const canvasStream = canvas.captureStream(frameRate);
+            const finalStream = new MediaStream([canvasStream.getVideoTracks()[0]]);
+
+            // Try to extract original audio and combine it silently
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const source = audioContext.createMediaElementSource(sourceVideo);
+                    mediaStreamDestination = audioContext.createMediaStreamDestination();
+                    
+                    // Connect source directly to destination stream (NOT to audioContext.destination)
+                    // This ensures audio is recorded but NOT played out loud to the user
+                    source.connect(mediaStreamDestination);
+                }
+                
+                if (audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                }
+
+                // Add audio tracks to final stream
+                if (mediaStreamDestination.stream.getAudioTracks().length > 0) {
+                    finalStream.addTrack(mediaStreamDestination.stream.getAudioTracks()[0]);
+                }
+            } catch (err) {
+                console.warn("Audio extraction skipped or failed: ", err);
+            }
+
+            // Unmute the video so Web Audio API can capture it, but it won't play aloud due to routing above
+            sourceVideo.muted = false;
+
+            // Determine best supported format
+            let options = { mimeType: 'video/webm' };
+            if (MediaRecorder.isTypeSupported('video/mp4')) {
+                options = { mimeType: 'video/mp4' };
+                downloadBtn.download = "watermarked_video.mp4";
+            } else if (MediaRecorder.isTypeSupported('video/webm; codecs=vp9,opus')) {
+                options = { mimeType: 'video/webm; codecs=vp9,opus' };
+            }
+
+            const mediaRecorder = new MediaRecorder(finalStream, options);
+            const recordedChunks = [];
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) recordedChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(recordedChunks, { type: options.mimeType });
+                const url = URL.createObjectURL(blob);
+                
+                downloadBtn.href = url;
+                downloadBtn.classList.remove('hidden');
+                processBtn.classList.add('hidden');
+                
+                progressBar.style.width = '100%';
+                statusText.textContent = "Processing complete! Click 'Download Video'.";
+                isProcessing = false;
+                
+                // Keep the video paused at the end so it doesn't restart the loop
+                sourceVideo.pause();
+            };
+
+            // Start recording and playback
+            mediaRecorder.start();
+            
+            // Wait for video to be ready before playing to prevent black frames at start
+            sourceVideo.oncanplay = () => {
+                if (isProcessing) {
+                    sourceVideo.play();
+                    drawFrame(false);
+                    sourceVideo.oncanplay = null; // remove listener
+                }
+            };
+            
+            // Stop recording when video ends
+            sourceVideo.onended = () => {
+                mediaRecorder.stop();
+                cancelAnimationFrame(animationFrameId);
+            };
+        });
+    </script>
+</body>
+</html>
